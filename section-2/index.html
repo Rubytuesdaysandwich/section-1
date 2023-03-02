@@ -18,7 +18,8 @@
     </header>
     <section id="user-goal">
       <h2>My Course Goal</h2>
-      <p>{{ courseGoal }}</p>
+      <!-- < v-html="outputGoal()"> --><!--v-html should be used wisely due to it creating security weakness from cross side scripting attacks -->
+      <p>{{outputGoal()}}</p>
       <p>Learn more <a v-bind:href="vueLink">about Vue</a></p>
       <!--v-bind set the script to the attribute-->
       <!--interpolation-->
