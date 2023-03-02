@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A First App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <label for="goal">Goal</label>
+        <input
+          type="text"
+          id="goal"
+          v-model="enteredValue"
+        /><!--v-model is not a default html attribute it is part of vue js-->
+        <button v-on:click="addGoal">Add Goal</button
+        ><!--v-on:click is vue js-->
+        <!--executes the function "addGoal" when button is clicked-->
+      </div>
+      <ul>
+        <!-- new list elment will be put here in the DOM -->
+        <li v-for="goal in goals">{{goal}}</li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
