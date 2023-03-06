@@ -18,8 +18,9 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button>Add</button>
-      <button>Remove</button>
+      <button v-on:click="counter++">Add</button
+      ><!--add one to the counter and remove one from the counter-->
+      <button v-on:click="counter = counter - 5">Remove</button>
       <p>Result: {{ counter }}</p>
     </section>
   </body>
