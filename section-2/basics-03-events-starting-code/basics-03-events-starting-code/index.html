@@ -18,10 +18,23 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button v-on:click="counter++">Add</button
+      <button v-on:click="add(10)">Add 10</button
       ><!--add one to the counter and remove one from the counter-->
-      <button v-on:click="counter = counter - 5">Remove</button>
+      <button title="right-click" v-on:click.right="subtract(5)">
+        subtract 5</button
+      ><!--right modifier uses the right mouse button-->
+      <p v-once>starting counter:{{counter}}</p>
       <p>Result: {{ counter }}</p>
+      <input
+        type="text"
+        v-on:input="setName( $event,'Durfee')"
+        v-on:keyup.enter="confirmInput"
+      />
+      <p>Your Name:{{confirmedName}}</p>
+      <form v-on:submit.prevent="submitForm">
+        <!--prevent browser reload default on submission-->
+        <input type="text" /> <button>sign up</button>
+      </form>
     </section>
   </body>
 </html>
