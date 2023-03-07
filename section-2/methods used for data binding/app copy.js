@@ -6,6 +6,17 @@ const app = Vue.createApp({
       confirmedName: "",
     };
   },
+  computed: {
+    // dont call computed properties just point at it fullname.
+    fullname() {
+      console.log("running again");
+      if (this.name === "") {
+        return "";
+      } else {
+        return (this.name = event.target.value + " " + lastName);
+      }
+    },
+  },
   methods: {
     add(num) {
       this.counter = this.counter + num; //we do not need to return this value because we are using it as a listener on a button
@@ -15,7 +26,12 @@ const app = Vue.createApp({
       this.counter = this.counter - num;
     },
     setName(event, lastName) {
-      return (this.name = event.target.value + " " + lastName);
+      //this could work however the code is still ran everytime a action is done within the vue app  which wastes resources. We can use computed properties for this instead
+      if (this.name === "") {
+        return "";
+      } else {
+        return (this.name = event.target.value + " " + lastName);
+      }
     },
     submitForm(event) {
       // event.preventDefault(); this can be replace by the attribut modifier called prevent in vue js

@@ -26,7 +26,7 @@
       <p>Result: {{ counter }}</p>
       <input type="text" v-model="name" />
       <button v-on:click="resetInput()">Reset Input</button>
-      <p>Your Name:{{name}}</p>
+      <p>Your Name:{{fullname}}</p>
       <!-- <input
         type="text"
         v-on:input="setName( $event,'Durfee')"
@@ -36,3 +36,4 @@
     </section>
   </body>
 </html>
+<!--* computed properties like method but only executed only if a dependency has changed  -->
