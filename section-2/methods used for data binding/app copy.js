@@ -4,26 +4,38 @@ const app = Vue.createApp({
       counter: 0,
       name: "",
       confirmedName: "",
+      // fullname:''
     };
   },
   watch: {
     //watch automatically gets access to the name data attrirbute
     // watch looks for change in the name data attribute and if there is a change it will run
-    name() {
-      this.fullname = value + " " + "strange";
-    },
+    // name(value) {
+    //   if (value === "") {
+    //     this.fullname = "";
+    //   } else {
+    //     this.fullname = value + " " + this.lastName;
+    //   }
+    // },
+    // lastName(value) {
+    //   if (value === "") {
+    //     this.fullname = "";
+    //   } else {
+    //     this.fullname = this.lastName + " " + value;
+    //   }
+    // },
   },
 
   computed: {
     // dont call computed properties just point at it fullname.
-    // fullname(event, lastName) {
-    //   console.log("running again");
-    //   if (this.name === "") {
-    //     return "";
-    //   } else {
-    //     return this.name + " " + "strange";
-    //   }
-    // },
+    fullname(event, lastName) {
+      console.log("running again");
+      if (this.name === "" || this.lastName === "") {
+        return "";
+      } else {
+        return this.name + " " + this.lastName;
+      }
+    },
   },
   methods: {
     add(num) {
