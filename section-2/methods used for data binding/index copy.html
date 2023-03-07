@@ -24,7 +24,11 @@
         subtract 5</button
       ><!--right modifier uses the right mouse button-->
       <p>Result: {{ counter }}</p>
-      <input type="text" v-model="name" />
+      <input type="text" v-model="name" /><input
+        type="text"
+        v-model="lastName"
+      />
+      <br />
       <button v-on:click="resetInput()">Reset Input</button>
       <p>Your Name:{{fullname}}</p>
       <!-- <input
