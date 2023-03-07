@@ -6,16 +6,24 @@ const app = Vue.createApp({
       confirmedName: "",
     };
   },
+  watch: {
+    //watch automatically gets access to the name data attrirbute
+    // watch looks for change in the name data attribute and if there is a change it will run
+    name() {
+      this.fullname = value + " " + "strange";
+    },
+  },
+
   computed: {
     // dont call computed properties just point at it fullname.
-    fullname(event, lastName) {
-      console.log("running again");
-      if (this.name === "") {
-        return "";
-      } else {
-        return this.name + " " + "strange";
-      }
-    },
+    // fullname(event, lastName) {
+    //   console.log("running again");
+    //   if (this.name === "") {
+    //     return "";
+    //   } else {
+    //     return this.name + " " + "strange";
+    //   }
+    // },
   },
   methods: {
     add(num) {
