@@ -8,12 +8,12 @@ const app = Vue.createApp({
   },
   computed: {
     // dont call computed properties just point at it fullname.
-    fullname() {
+    fullname(event, lastName) {
       console.log("running again");
       if (this.name === "") {
         return "";
       } else {
-        return (this.name = event.target.value + " " + lastName);
+        return this.name + " " + "strange";
       }
     },
   },
@@ -25,14 +25,14 @@ const app = Vue.createApp({
       //using the peramater we can allow any value in our html to be changed to add/sub any amount by simply changing the value in paranthesis
       this.counter = this.counter - num;
     },
-    setName(event, lastName) {
-      //this could work however the code is still ran everytime a action is done within the vue app  which wastes resources. We can use computed properties for this instead
-      if (this.name === "") {
-        return "";
-      } else {
-        return (this.name = event.target.value + " " + lastName);
-      }
-    },
+    // setName(event, lastName) {
+    //   //this could work however the code is still ran everytime a action is done within the vue app  which wastes resources. We can use computed properties for this instead
+    //   if (this.name === "") {
+    //     return "";
+    //   } else {
+    //     return (this.name = event.target.value + " " + lastName);
+    //   }
+    // },
     submitForm(event) {
       // event.preventDefault(); this can be replace by the attribut modifier called prevent in vue js
       alert("submitted");
