@@ -1,8 +1,8 @@
 const app = Vue.createApp({
   data() {
     return {
+      text: "working with methods computed and watch",
       result: 0,
-      notify: "",
     };
   },
   watch: {
@@ -17,13 +17,12 @@ const app = Vue.createApp({
   },
   computed: {
     thirtySeven() {
-      console.log("running");
       if (this.result < 37) {
-        this.notify = "Not there yet";
+        return "Not there yet";
       } else if (this.result > 37) {
-        this.notify = "Too much";
+        return "Too much";
       } else {
-        this.notify = "perfect";
+        return this.result;
       }
     },
   },
