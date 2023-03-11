@@ -15,6 +15,7 @@ const app = Vue.createApp({
   },
   methods: {
     boxSelected(box) {
+      console.log("selected");
       if (box === "A") {
         console.log("a");
         this.boxASelected = !this.boxASelected;
