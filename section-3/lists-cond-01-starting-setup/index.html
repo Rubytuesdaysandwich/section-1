@@ -18,12 +18,22 @@
     </header>
     <section id="user-goals">
       <h2>My course goals</h2>
-      <input type="text" />
-      <button>Add Goal</button>
-      <p>No goals have been added yet - please start adding some!</p>
-      <ul>
-        <li>Goal</li>
+      <input @keyup.enter="addGoal()" type="text" v-model="enteredGoalValue" />
+      <button @click="addGoal()">Add Goal</button>
+      <p v-if="goals.length === 0">
+        No goals have been added yet - please start adding some!<!--v-show hide elements without removing them from the DOM operates like if-->
+      </p>
+      <ul v-else="goals.length >0">
+        <li v-for="(goal,index) in goals ">{{index}}-{{goal}}</li>
+        <!--of or in. in is advised to be used. You can use any name for the goal {{goal}} needs to match the goal in goals-->
       </ul>
+      <!--* <ul> -->
+      <!--* <li v-for="num in 10">{{num}}</li> --><!--go through a list of values like from 1 to 10-->
+      <!--* </ul> -->
+      <!-- ================== -->
+      <!--* <ul> -->
+      <!--* <li v-for="(value,key,index) in {name:'Max', age:31}">{{index}}-{{key}}:{{value}}</li>using vue to work with objects to get key value pairs with index value and ouput them -->
+      <!--* </ul> -->
     </section>
   </body>
 </html>
