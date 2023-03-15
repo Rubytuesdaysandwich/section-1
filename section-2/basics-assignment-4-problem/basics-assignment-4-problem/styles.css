@@ -3,7 +3,7 @@
 }
 
 html {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 body {
@@ -89,3 +89,9 @@ p {
 .visible {
   display: block;
 }
+
+/* .active {
+  border-color: red;
+  background-color: blue;
+  color: pink;
+}  using v-model here to dynamically add classes was a much faster and btter approach*/
