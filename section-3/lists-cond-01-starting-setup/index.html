@@ -24,7 +24,15 @@
         No goals have been added yet - please start adding some!<!--v-show hide elements without removing them from the DOM operates like if-->
       </p>
       <ul v-else="goals.length >0">
-        <li v-for="(goal,index) in goals ">{{index}}-{{goal}}</li>
+        <li
+          v-for="(goal,index) in goals "
+          :key="goal"
+          @click="removeGoal(index)"
+        >
+          <p>{{index}}-{{goal}}</p>
+          <input type="text" @click.stop />
+        </li>
+        <!--! add :key="" as a special identifier on v-for item to avoid bugs a optimize peformance you can use something like ID here from a data base. you cannot use index because as items are deleted the index values will change -->
         <!--of or in. in is advised to be used. You can use any name for the goal {{goal}} needs to match the goal in goals-->
       </ul>
       <!--* <ul> -->
