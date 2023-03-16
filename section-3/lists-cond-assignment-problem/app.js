@@ -4,6 +4,7 @@ const app = Vue.createApp({
       tasks: [],
       enteredTaskValue: "",
       displayContent: true,
+      displayButton: "hide",
     };
   },
   watch: {},
@@ -14,7 +15,16 @@ const app = Vue.createApp({
         hidden: !this.displayContent,
       };
     },
+
+    changeContent() {
+      if (this.displayContent === true) {
+        return (this.displayButton = "hide");
+      } else {
+        return (this.displayButton = "show");
+      }
+    },
   },
+
   methods: {
     addTasks() {
       this.tasks.push(this.enteredTaskValue);
