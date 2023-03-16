@@ -3,15 +3,15 @@ const app = Vue.createApp({
     return {
       tasks: [],
       enteredTaskValue: "",
-      displayContent: false,
+      displayContent: true,
     };
   },
   watch: {},
   computed: {
     toggleClasses() {
       return {
-        visible: this.toggleParagraphs,
-        hidden: !this.toggleParagraphs,
+        visible: this.displayContent,
+        hidden: !this.displayContent,
       };
     },
   },

@@ -25,6 +25,7 @@
       <ul>
         <!-- 2) Output the list of tasks here -->
         <li
+          :class="toggleClasses"
           @click="removeTasks(index)"
           :key="task"
           v-for="(task,index) in tasks"
