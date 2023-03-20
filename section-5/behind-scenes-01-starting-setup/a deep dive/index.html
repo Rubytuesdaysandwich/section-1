@@ -18,9 +18,17 @@
     </header>
     <section id="app">
       <h2>How Vue Works</h2>
-      <input type="text" @input="saveInput">
+      <input
+        type="text"
+        ref="userText"
+      /><!--the ref attribute nob default attribute. assign a string identifier of your choice add to any html element. -->
       <button @click="setText">Set Text</button>
       <p>{{ message }}</p>
+      <section id="app2">
+        <!--anything in this section was our template. This template is now in the js file under template:-->
+        <!-- <p>{{message}===== does not mowrk because this app does not containt his data property</p> -->
+        <!-- <p>{{favoriteMeal}}</p> --><!--this is now in the template in the js file-->
+      </section>
     </section>
   </body>
 </html>
