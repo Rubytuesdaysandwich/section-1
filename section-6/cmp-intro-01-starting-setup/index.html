@@ -17,16 +17,22 @@
       <h1>FriendList</h1>
     </header>
     <section id="app">
-      <ul>
+      <!-- <ul>
         <li v-for="friend in friends" :key="friend.id">
           <h2>{{friend.name}}</h2>
-          <button>Show Details</button>
-          <ul>
+          <button @click="toggleDetails()">
+            {{detailsAreVisible ? 'Hide' : "Show"}}
+          </button>
+          <ul v-if="detailsAreVisible">
             <li><strong>Phone:</strong> {{friend.phone}}</li>
             <li><strong>Email:</strong> {{friend.email}}</li>
           </ul>
         </li>
-      </ul>
+      </ul> -->
+      <!--! put into template -->
+      <friend-contact></friend-contact>
+      <friend-contact></friend-contact>
+      <!--*friend-contact is a custom html component-->
     </section>
   </body>
 </html>
