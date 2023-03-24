@@ -1,5 +1,8 @@
 <template>
   <h2>My Friends</h2>
+  <ul>
+    <li></li>
+  </ul>
 </template>
 <script>
 export default {
