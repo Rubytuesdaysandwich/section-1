@@ -5,24 +5,30 @@
     </header>
     <!-- we want to make the friend contact interchangeable with other data so we can reuse the components we make. We can use props within the components folder to do this.  -->
     <ul>
+      <!-- //*we added dynamic prop data so it will automatically output everything from the array with v-for -->
       <friend-contact
-        name="Manuel Lorenz"
-        phone-number="01234 78992"
-        email-address="manuel@localhost.com"
-        is-favorite="1"
+        v-for="friend in friends"
+        :key="friend.id"
+        :id="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.email"
+        :is-favorite="friend.isFavorite"
+        @toggle-favorite="toggleFavoriteStatus"
       ></friend-contact>
-      <friend-contact
+      <!-- emitting custom events //? @toggle-favorite="toggleFavoriteStatus"-->
+      <!-- <friend-contact
         name="Julie Jones"
         phone-number="0987 65431"
         email-address="julie@localhost.com"
-        is-favorite="0"
+        :is-favorite="false"
       ></friend-contact>
       <friend-contact
         name="rueben durfee"
         phone-number="435 938 2463"
         email-address="rueben@localhost.com"
-        is-favorite="0"
-      ></friend-contact>
+        :is-favorite="false"
+      ></friend-contact> -->
     </ul>
   </section>
 </template>
@@ -37,15 +43,34 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          isFavorite: true,
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
+          isFavorite: false,
+        },
+        {
+          id: "rueben",
+          name: "rueben durfee",
+          phone: "435 938 2463",
+          email: "rueben@localhost.com",
+          isFavorite: false,
         },
       ],
     };
+  },
+  methods: {
+    toggleFavoriteStatus(friendId) {
+      //emmitting custom event
+      // alert("this works");
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId
+      );
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
   },
 };
 </script>
