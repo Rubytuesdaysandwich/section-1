@@ -49,6 +49,7 @@ export default {
       // },
     },
   },
+
   data() {
     return {
       detailsAreVisible: false,
@@ -75,6 +76,7 @@ export default {
       the data flow better.*/
     //!▲
     toggleFavorite() {
+      //$emit is putting out a custom event that we can listen to as a property in App.vue @toggle-favorite="toggleFavoriteStatus"
       this.$emit("toggle-favorite", this.id); //set to true if false and false to true if false
     },
   },
