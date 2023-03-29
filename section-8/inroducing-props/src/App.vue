@@ -17,6 +17,7 @@
         @toggle-favorite="toggleFavoriteStatus"
       ></friend-contact>
       <!-- emitting custom events //? @toggle-favorite="toggleFavoriteStatus"-->
+      <!-- unidirectional data flow -->
       <!-- <friend-contact
         name="Julie Jones"
         phone-number="0987 65431"
