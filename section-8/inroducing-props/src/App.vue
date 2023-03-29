@@ -3,9 +3,26 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <!-- we want to make the friend contact interchangeable with other data so we can reuse the components we make. We can use props within the components folder to do this.  -->
     <ul>
-      <friend-contact></friend-contact>
-      <friend-contact></friend-contact>
+      <friend-contact
+        name="Manuel Lorenz"
+        phone-number="01234 78992"
+        email-address="manuel@localhost.com"
+        is-favorite="1"
+      ></friend-contact>
+      <friend-contact
+        name="Julie Jones"
+        phone-number="0987 65431"
+        email-address="julie@localhost.com"
+        is-favorite="0"
+      ></friend-contact>
+      <friend-contact
+        name="rueben durfee"
+        phone-number="435 938 2463"
+        email-address="rueben@localhost.com"
+        is-favorite="0"
+      ></friend-contact>
     </ul>
   </section>
 </template>
