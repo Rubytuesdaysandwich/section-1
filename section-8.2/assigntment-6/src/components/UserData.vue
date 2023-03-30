@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <label>Username</label>
-    <input type="text" v-model="enteredUsername" />
-  </div>
-  <div>
-    <label>Age</label>
-    <input type="int" v-model="enteredAge" />
-  </div>
-  <div><button>Add Active User</button></div>
+  <form @sbumbit.prevent="submbitData">
+    <div>
+      <label>Username:</label>
+      <input type="text" v-model="enteredUsername" />
+    </div>
+    <div>
+      <label>Age:</label>
+      <input type="text" v-model="enteredAge" />
+    </div>
+    <div><button>Add Active User</button></div>
+  </form>
+
   <!-- UserData should output two input fields => for name and age -->
 </template>
 
@@ -20,6 +23,10 @@ export default {
       enteredAge: "",
     };
   },
-  methods: {},
+  methods: {
+    submitData() {
+      this.$emit("add-user", this.enteredUsername, this.enteredAge);
+    },
+  },
 };
 </script>
