@@ -4,7 +4,7 @@ import App from "./App.vue";
 import ActiveUser from "./components/ActiveUser.vue";
 import UserData from "./components/UserData.vue";
 
-const app = createApp({ App });
+const app = createApp(App);
 
 app.component("active-user", ActiveUser);
 app.component("add-user-data", UserData);
