@@ -15,6 +15,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+    <button @click="$emit('delete', id)">Delete</button>
   </li>
 </template>
 
@@ -50,7 +51,7 @@ export default {
     },
   },
   //? we will be using this method through out the rest of the course for emits
-  emits: ["toggle-favorite"],
+  emits: ["toggle-favorite", "delete"],
   //*passing emits a object allows us to write a function on our custom events similar to props.
   //* we are talking to the parent items from the child when we are using emits similar to event listeners on buttons
   // emits: {
