@@ -10,8 +10,9 @@
           v-for="user in activeUsers"
           :key="user.id"
           :id="user.id"
-          :username="user.username"
+          :user-name="user.username"
           :age="user.age"
+          @delete="deleteContact"
         ></active-user>
       </li>
     </ul>
@@ -22,7 +23,13 @@
 export default {
   data() {
     return {
-      activeUsers: [{}],
+      activeUsers: [
+        // {//test block
+        //   id: "",
+        //   username: "",
+        //   age: "",
+        // },
+      ],
     };
   },
   methods: {
@@ -30,9 +37,12 @@ export default {
       const adduser = {
         id: new Date().toISOString(),
         username: username,
-        age: age,
+        age: +age, // + set to type number
       };
       this.activeUsers.push(adduser);
+    },
+    deleteContact(userId) {
+      this.activeUsers = this.activeUsers.filter((user) => user.id !== userId);
     },
   },
 };
@@ -52,7 +62,7 @@ header {
   margin: 3rem auto;
   border-radius: 10px;
   padding: 1rem;
-  background-color: #58004d;
+  background-color: #8cbbf1;
   color: white;
   text-align: center;
   width: 90%;
@@ -76,7 +86,7 @@ header {
 #app h2 {
   font-size: 2rem;
   border-bottom: 4px solid #ccc;
-  color: #58004d;
+  color: #28c25b;
   margin: 0 0 1rem 0;
 }
 #app button {
@@ -90,8 +100,11 @@ header {
 }
 #app button:hover,
 #app button:active {
-  background-color: #ec3169;
-  border-color: #ec3169;
+  /* background-color: #ec3169;
+  border-color: #ec3169; */
+  font-size: 25px;
+  border: 3px solid #00ffea;
+  background-color: #7335c4;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
 #app input {

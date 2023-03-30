@@ -5,15 +5,15 @@
     </button>
     <ul v-if="detailsAreVisible">
       <li>
-        <strong>userNamea:</strong>
-        <h2>{{ Username }}</h2>
+        <strong>UserName:</strong>
+        <h2>{{ userName }}</h2>
       </li>
       <li>
         <strong>Email:</strong>
-        <h3>{{ Age }}</h3>
+        <h3>{{ age }} years</h3>
       </li>
     </ul>
-    <button @click="$emit('delete', id)"></button>
+    <button @click="$emit('delete', id)">Delete</button>
   </li>
 </template>
 
@@ -29,13 +29,13 @@ export default {
       required: true,
     },
     age: {
-      type: String,
+      type: Number,
       required: true,
     },
   },
   emits: ["delete"],
   data() {
-    return {};
+    return { detailsAreVisible: false };
   },
   methods: {
     toggleDetails() {

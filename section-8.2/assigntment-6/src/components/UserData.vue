@@ -1,12 +1,12 @@
 <template>
-  <form @sbumbit.prevent="submbitData">
+  <form @submit.prevent="submitData">
     <div>
       <label>Username:</label>
-      <input type="text" v-model="enteredUsername" />
+      <input type="text" placeholder="Your Name" v-model="enteredUsername" />
     </div>
     <div>
       <label>Age:</label>
-      <input type="text" v-model="enteredAge" />
+      <input type="text" placeholder="Your age" v-model="enteredAge" />
     </div>
     <div><button>Add Active User</button></div>
   </form>
