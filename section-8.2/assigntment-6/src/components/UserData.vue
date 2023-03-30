@@ -7,6 +7,7 @@
     <label>Age</label>
     <input type="int" v-model="enteredAge" />
   </div>
+  <div><button>Add Active User</button></div>
   <!-- UserData should output two input fields => for name and age -->
 </template>
 
