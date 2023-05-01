@@ -21,7 +21,7 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-# 
+#ignore npm files
 babel.config.js
 jsconfig.json
 package-lock.json
