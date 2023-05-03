@@ -13,6 +13,7 @@
     </teleport>
   </div>
 </template>
+//* you can have multiple top level elements
 <script>
 import ErrorAlert from "./ErrorAlert.vue";
 export default {
