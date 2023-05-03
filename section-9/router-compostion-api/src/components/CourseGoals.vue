@@ -1,7 +1,8 @@
 <template>
   <ul>
     <li v-for="goal in goals" :key="goal">
-      <slot :item="goal" another-prop="..."> </slot>
+      <slot :item="goal" helloProp="...heyy"></slot>
+      <!-- scoped slots :item ='goal' -->
     </li>
   </ul>
 </template>
