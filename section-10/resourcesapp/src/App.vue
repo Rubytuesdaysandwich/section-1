@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <learning-resources :resources="StoredResources"></learning-resources>
+    <stored-resources :resources="storedResources"></stored-resources>
   </ul>
 </template>
 
@@ -19,7 +19,7 @@ export default {
         {
           id: "official-guide",
           title: "official Guide",
-          description: "The official Vue.js ddocumentation.",
+          description: "The official Vue.js documentation.",
           link: "https://vuejs.org",
         },
         {

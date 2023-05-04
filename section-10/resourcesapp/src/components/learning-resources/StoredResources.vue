@@ -10,12 +10,12 @@
   </ul>
 </template>
 <script>
-import LearningResource from "./LearningResource.vue";
+import LearningResources from "./LearningResource.vue";
 
 export default {
   props: ["resources"],
   components: {
-   LearningResource,
+    LearningResources,
   },
 };
 </script>
