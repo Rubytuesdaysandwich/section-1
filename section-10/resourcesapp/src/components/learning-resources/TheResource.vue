@@ -48,6 +48,7 @@ export default {
     return {
       resources: this.storedResources, //key: value being accessed
       addResource: this.addResource,
+      deleteResource: this.removeResource,
     };
   },
 
