@@ -1,18 +1,21 @@
 <template>
   <li>
-    <div>
+    <base-card>
       <header>
         <h3>{{ title }}</h3>
-        <button>Delete</button>
+        <base-button mode="flat">Delete</base-button>
       </header>
-    </div>
-    <p>{{ description }}</p>
-    <nav><a :href="link">view Resource</a></nav>
+      <p>{{ description }}</p>
+      <nav><a :href="link">view Resource</a></nav>
+    </base-card>
   </li>
 </template>
 
 <script>
+import BaseButton from "./UI/BaseButton.vue";
+import BaseCard from "./UI/BaseCard.vue";
 export default {
+  components: { BaseCard, BaseButton },
   props: ["title", "description", "link"],
 };
 </script>
