@@ -1,8 +1,18 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control">
+    <div
+      class="form-control"
+      :class="{ invalid: userNameValidity === 'invalid' }"
+    >
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model="userName" />
+      <input
+        id="user-name"
+        name="user-name"
+        type="text"
+        v-model.trim="userName"
+        @blur="validateInput"
+      />
+      <p v-if="userNameValidity === 'invalid'">Please enter a valid name!</p>
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -107,6 +117,7 @@ export default {
       interest: [],
       how: "",
       confirm: false,
+      userNameValidity: "pending",
     };
   },
   //v-model --- vue converts to type number automatically where as regular JS does not. refs-The stored value from a saved number type is a string
@@ -129,6 +140,13 @@ export default {
       console.log(this.confirm);
       this.confirm = false;
     },
+    validateInput() {
+      if (this.username === "") {
+        this.userNameValidity = "invalid";
+      } else {
+        this.userNameValidity = "valid";
+      }
+    },
   },
 };
 </script>
@@ -145,6 +163,9 @@ form {
 
 .form-control {
   margin: 0.5rem 0;
+}
+.form-control.invalid input {
+  border-color: red;
 }
 
 label {
