@@ -1,9 +1,11 @@
 <template>
+  <!-- prevent the web page from reloading and loosing the data on the form during submit -->
   <form @submit.prevent="submitForm">
     <div
       class="form-control"
       :class="{ invalid: userNameValidity === 'invalid' }"
     >
+      <!-- add the invalid class if usernamevalidity is true -->
       <label for="user-name">Your Name</label>
       <input
         id="user-name"
@@ -16,7 +18,13 @@
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" v-model="userAge" />
+      <input
+        id="age"
+        name="age"
+        type="number"
+        v-model="userAge"
+        ref="ageInput"
+      />
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -121,12 +129,14 @@ export default {
     };
   },
   //v-model --- vue converts to type number automatically where as regular JS does not. refs-The stored value from a saved number type is a string
+  //The data from the form submission is being posted to the form
   methods: {
     submitForm() {
       console.log("Username:" + this.userName);
       this.userName = "";
       console.log("user age:");
-      console.log(this.userAge);
+      console.log(this.userAge + 5);
+      console.log(this.$refs.ageInput.value + 5);
       console.log(31);
       console.log("Referrer:" + this.referrer);
       this.referrer = "wom";
@@ -141,7 +151,7 @@ export default {
       this.confirm = false;
     },
     validateInput() {
-      if (this.username === "") {
+      if (this.userName === "") {
         this.userNameValidity = "invalid";
       } else {
         this.userNameValidity = "valid";
@@ -165,7 +175,14 @@ form {
   margin: 0.5rem 0;
 }
 .form-control.invalid input {
+  border-width: 1px;
   border-color: red;
+  border-style: solid;
+  /* highlight invalid input from the user  */
+}
+.form-control.invalid label {
+  color: red;
+  /* highlight invalid input from the user  */
 }
 
 label {
