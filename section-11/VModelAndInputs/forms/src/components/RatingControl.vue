@@ -1,4 +1,5 @@
 <template>
+  <!-- section 11 completed -->
   <ul>
     <!-- we replace activeOption with modelValue so we don't need to write any computed properties -->
     <li :class="{ active: modelValue === 'poor' }">

@@ -1,5 +1,6 @@
 <template>
   <!-- prevent the web page from reloading and loosing the data on the form during submit -->
+   <!-- section 11 completed -->
   <form @submit.prevent="submitForm">
     <div
       class="form-control"

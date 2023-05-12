@@ -1,15 +1,16 @@
 <template>
   <the-form></the-form>
+  <!-- section 11 completed -->
 </template>
 
 <script>
-import TheForm from './components/TheForm.vue';
+import TheForm from "./components/TheForm.vue";
 
 export default {
   components: {
-    TheForm
-  }  
-}
+    TheForm,
+  },
+};
 </script>
 
 <style>
