@@ -64,7 +64,7 @@ export default {
       if (this.enteredName === "" || !this.chosenRating) {
         this.invalidInput = true;
         return;
-      }
+      }else
       this.invalidInput = false;
 
       //! no longer needed this.$emit("survey-submit", {
@@ -83,10 +83,11 @@ export default {
           },
           //chosen from the emit method
           body: JSON.stringify({
-            name: this.userName,
+            name: this.enteredName,
             rating: this.chosenRating,
           }),
-        });
+        }
+      );
       //or you could use axios
       this.enteredName = "";
       this.chosenRating = null;
