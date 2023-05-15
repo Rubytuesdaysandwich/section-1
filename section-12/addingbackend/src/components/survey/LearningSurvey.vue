@@ -41,6 +41,8 @@
         <p v-if="invalidInput">
           One or more input fields are invalid. Please check your provided data.
         </p>
+
+        <p v-if="error">{{ error }}</p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -56,6 +58,7 @@ export default {
       enteredName: "",
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
   emits: ["survey-submit"],
@@ -64,8 +67,7 @@ export default {
       if (this.enteredName === "" || !this.chosenRating) {
         this.invalidInput = true;
         return;
-      }else
-      this.invalidInput = false;
+      } else this.invalidInput = false;
 
       //! no longer needed this.$emit("survey-submit", {
       //!   userName: this.enteredName,
@@ -73,6 +75,7 @@ export default {
       //! });
       //built in browser support for grabing and sending data.
       //sending https request to firebase to manage data ▼
+      this.error = null;
       fetch(
         "https://learing-vue-js-backend-default-rtdb.firebaseio.com/surveys.json",
         {
@@ -87,7 +90,18 @@ export default {
             rating: this.chosenRating,
           }),
         }
-      );
+      )
+        .then((response) => {
+          if (response.ok) {
+            //.
+          } else {
+            throw new Error("Could not save data!");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.error = error.message;
+        });
       //or you could use axios
       this.enteredName = "";
       this.chosenRating = null;
