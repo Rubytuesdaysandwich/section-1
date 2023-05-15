@@ -86,8 +86,7 @@ export default {
             name: this.userName,
             rating: this.chosenRating,
           }),
-        }
-      );
+        });
       //or you could use axios
       this.enteredName = "";
       this.chosenRating = null;
