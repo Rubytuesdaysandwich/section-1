@@ -13,7 +13,7 @@ const router = createRouter({
       component: TeamsList,
     },
     { path: "/users", component: UsersList },
-    { path: "/teams/:teamId", component: TeamMembers }, //dynamic data routing
+    { path: "/teams/:teamId", component: TeamMembers, props: true }, //dynamic data routing
   ], //our-domain.com/team => ...
   linkActiveClass: "active", //changes the defauly active-router-link class
   //tells what component should be loaded per component
