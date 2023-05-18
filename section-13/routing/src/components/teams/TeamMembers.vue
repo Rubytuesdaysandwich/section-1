@@ -32,9 +32,11 @@ export default {
     loadTeamMembers(teamId) {
       // const teamId = route.params.teamId;
       const selectedTeam = this.teams.find((team) => team.id === teamId);
+      console.log(selectedTeam);
       const members = selectedTeam.members;
       const selectedMembers = [];
       for (const member of members) {
+        console.log(members);
         const selectedUser = this.users.find((user) => user.id === member);
         selectedMembers.push(selectedUser); //does not need this. because its a local constant
         //moved from created();
@@ -48,8 +50,8 @@ export default {
     this.loadTeamMembers(this.teamId);
   },
   watch: {
-    $route(newId) {
-      this.loadTeamMembers(newRoute);
+    teamId(newId) {
+      this.loadTeamMembers(newId);
     },
   },
 };
