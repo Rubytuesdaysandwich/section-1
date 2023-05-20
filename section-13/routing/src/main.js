@@ -5,6 +5,8 @@ import TeamsList from "./components/teams/TeamsList.vue";
 import UsersList from "./components/users/UsersList.vue";
 import TeamMembers from "./components/teams/TeamMembers.vue";
 import NotFound from "./components/nav/NotFound.vue";
+import TeamsFooter from "./components/teams/TeamsFooter.vue";
+import UsersFooter from "./components/users/UsersFooter.vue";
 //since these components are being loaded in via routing they do not need to registered locally or globally
 const router = createRouter({
   history: createWebHistory(), //keep track of what the last page url was
@@ -12,15 +14,21 @@ const router = createRouter({
     { path: "/", redirect: "/teams" },
     // {path:'/' , alias:}
     {
+      name: "teams",
       path: "/teams",
-      component: TeamsList,
+      components: { default: TeamsList, footer: TeamsFooter },
       children: [
         //children cannnot be registered in the main router-view using nested routes
-        { path: ":teamId", component: TeamMembers, props: true }, //dynamic data routing 
+        {
+          name: "team members ",
+          path: ":teamId",
+          component: TeamMembers,
+          props: true,
+        }, //dynamic data routing
       ],
       // alias: "/",
     },
-    { path: "/users", component: UsersList },
+    { path: "/users", components: { default: UsersList, footer: UsersFooter } },
 
     { path: "/:notfound(.*)", component: NotFound },
   ], //our-domain.com/team => ...
