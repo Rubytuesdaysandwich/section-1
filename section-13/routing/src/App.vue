@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       //dummy team data
-      activePage: "teams-list",
+      // activePage: "teams-list",
       teams: [
         { id: "t1", name: "Frontend Engineers", members: ["u1", "u2"] },
         { id: "t2", name: "Backend Engineers", members: ["u1", "u2", "u3"] },

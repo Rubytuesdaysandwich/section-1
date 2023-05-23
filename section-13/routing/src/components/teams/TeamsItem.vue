@@ -10,15 +10,21 @@
 export default {
   props: ["id", "name", "memberCount"],
 
-  computed:{
-teamMembersLink(){
-  // return '/teams/' +this.id;
-  return {name: 'team-memebers', params:{teamId:this.id}};
-  // this.$router.push({name: 'team-memebers', params:{teamId:this.id}});
-}
-}
+  computed: {
+    teamMembersLink() {
+      // return '/teams/' +this.id;
+      return {
+        name: "team-members",
+        params: { teamId: this.id },
+        query: { sort: "asc" },
+      };
+      // return this.$router.push({
+      //   name: "team-memebers",
+      //   params: { teamId: this.id },
+      // });
+    },
+  },
 };
-
 </script>
 
 <style scoped>
