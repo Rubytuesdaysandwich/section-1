@@ -4,12 +4,12 @@
     <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">Animate</button>
   </div>
+  <!-- transition must only have 1 direct child -->
   <div class="container">
-    <!-- transition must only have 1 direct child -->
     <transition>
-            <p v-if="paraIsVisible">This is only sometimes visible...</p>
+      <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
-      <button @click="toggleParagraph">Toggle Paragraph</button>
+    <button @click="toggleParagraph">Toggle Paragraph</button>
   </div>
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
     <p>This is a test dialog!</p>
@@ -93,8 +93,37 @@ button:active {
   animation: slide-fade 0.9s ease-out forwards;
   /* refers to keyframes to move the object */
 }
+.v-enter-from {
+  /* opacity: 0;
+  transform: translateY(-30px); */
+}
 
-@keyframes slide-fade {
+.v-enter-active {
+  animation: slide-scale 0.3s ease-out;
+  /* transition: all 0.3s ease-out; */
+}
+
+.v-enter-to {
+  /* opacity: 1;
+  transform: translateY(0); */
+}
+
+.v-leave-from {
+  /* opacity: 1;
+  transform: translate(0); */
+}
+.v-leave-active {
+  /* transition: all 0.3s ease-in; */
+  animation: slide-scale 0.3s ease-out;
+  /*you can use the keyframes or use the other method using v-enter */
+}
+
+.v-leave-to {
+  /* opacity: 0;
+  transform: translateY(30px); */
+}
+
+@keyframes slide-scale {
   0% {
     transform: translateZ(0) scale(1);
   }
