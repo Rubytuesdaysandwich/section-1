@@ -15,6 +15,8 @@
       @enter="enter"
       @before-leave="beforeLeave"
       @after-enter="afterAEnter"
+      @leave="leave"
+      @after-leave="afterLeave"
     >
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
@@ -62,6 +64,14 @@ export default {
     },
     beforeLeave(el) {
       console.log("beforeLeave");
+      console.log(el);
+    },
+    leave(el) {
+      console.log("leave");
+      console.log(el);
+    },
+    afterLeave(el) {
+      console.log("afterLeave");
       console.log(el);
     },
     showUsers() {
