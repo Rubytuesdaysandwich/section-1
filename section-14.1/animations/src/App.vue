@@ -50,10 +50,6 @@ export default {
     };
   },
   methods: {
-    enter(el) {
-      console.log("enter");
-      console.log(el);
-    },
     afterEnter(el) {
       console.log("afterEnter");
       console.log(el);
@@ -61,6 +57,12 @@ export default {
     beforeEnter(el) {
       console.log("beforeEnter");
       console.log(el);
+      el.style.opacity = 0;
+    },
+    enter(el) {
+      console.log("enter");
+      console.log(el);
+      setInterval(function () {}, 20);
     },
     beforeLeave(el) {
       console.log("beforeLeave");
