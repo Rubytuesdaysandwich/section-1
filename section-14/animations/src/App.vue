@@ -6,7 +6,10 @@
   </div>
   <!-- transition must only have 1 direct child -->
   <div class="container">
-    <transition>
+    <!-- using named transitions components -->
+    <!-- if youhave multiple transitions they will be effected the same if they are not named -->
+    <!-- You can also use attributes to change what they will be called example enter-to-class="some-class" -->
+    <transition name="para">
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
@@ -123,6 +126,35 @@ button:active {
   transform: translateY(30px); */
 }
 
+.para-enter-from {
+  /* opacity: 0;
+  transform: translateY(-30px); */
+}
+
+.para-enter-active {
+  animation: slide-scale 0.3s ease-out;
+  /* transition: all 0.3s ease-out; */
+}
+
+.para-enter-to {
+  /* opacity: 1;
+  transform: translateY(0); */
+}
+
+.para-leave-from {
+  /* opacity: 1;
+  transform: translate(0); */
+}
+.para-leave-active {
+  /* transition: all 0.3s ease-in; */
+  animation: slide-scale 0.3s ease-out;
+  /*you can use the keyframes or use the other method using v-enter */
+}
+
+.para-leave-to {
+  /* opacity: 0;
+  transform: translateY(30px); */
+}
 @keyframes slide-scale {
   0% {
     transform: translateZ(0) scale(1);
