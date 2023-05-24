@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  emits: ['close'],
+  emits: ["close"],
 };
 </script>
 
@@ -34,5 +34,18 @@ dialog {
   background-color: white;
   z-index: 100;
   border: none;
+  animation: modal 0.3s ease-out forwards;
+  /* keyframe modal */
+}
+
+@keyframes modal {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(0.9);
+  }
 }
 </style>

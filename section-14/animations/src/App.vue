@@ -1,7 +1,15 @@
 <template>
   <div class="container">
-    <div class="block" :clock="{animate:animatedBlock}"></div>
+    <!-- binding animate to to block to make it move  -->
+    <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">Animate</button>
+  </div>
+  <div class="container">
+    <!-- transition must only have 1 direct child -->
+    <transition>
+            <p v-if="paraIsVisible">This is only sometimes visible...</p>
+    </transition>
+      <button @click="toggleParagraph">Toggle Paragraph</button>
   </div>
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
     <p>This is a test dialog!</p>
@@ -15,12 +23,18 @@
 <script>
 export default {
   data() {
-    return { dialogIsVisible: false,
-    animatedBlock:false };
+    return {
+      dialogIsVisible: false,
+      animatedBlock: false,
+      paraIsVisible: false,
+    };
   },
   methods: {
-    animateBlock(){
-
+    animateBlock() {
+      this.animatedBlock = true;
+    },
+    toggleParagraph() {
+      this.paraIsVisible = !this.paraIsVisible;
     },
     showDialog() {
       this.dialogIsVisible = true;
@@ -61,6 +75,7 @@ button:active {
   height: 8rem;
   background-color: #290033;
   margin-bottom: 2rem;
+  /* transition: transform 0.3s ease-out; talking to the animate class */
 }
 .container {
   max-width: 40rem;
@@ -72,5 +87,23 @@ button:active {
   padding: 2rem;
   border: 2px solid #ccc;
   border-radius: 12px;
+}
+.animate {
+  /* transform: translateX(-150px); */
+  animation: slide-fade 0.9s ease-out forwards;
+  /* refers to keyframes to move the object */
+}
+
+@keyframes slide-fade {
+  0% {
+    transform: translateZ(0) scale(1);
+  }
+  70% {
+    transform: translate(-120px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-150px) scale(1);
+  }
 }
 </style>
