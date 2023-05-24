@@ -9,12 +9,26 @@
     <!-- using named transitions components -->
     <!-- if youhave multiple transitions they will be effected the same if they are not named -->
     <!-- You can also use attributes to change what they will be called example enter-to-class="some-class" -->
-    <transition name="para">
+    <transition
+      name="para"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @before-leave="beforeLeave"
+      @after-enter="afterAEnter"
+    >
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
   </div>
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
+  <div class="container">
+    <!-- only one item can be on the DOM at a time use else allows us to have more than one item within a transition -->
+    <!-- mode="out-in" control the fade in and out  -->
+    <transition name="fade-button" mode="out-in">
+      <button @click="showUsers" v-if="!usersAreVisable">Show users</button>
+      <button @click="hideUsers" v-else>Hide users</button>
+    </transition>
+  </div>
+  <base-modal @close="hideDialog" :open="dialogIsVisible">
     <p>This is a test dialog!</p>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
@@ -30,9 +44,32 @@ export default {
       dialogIsVisible: false,
       animatedBlock: false,
       paraIsVisible: false,
+      usersAreVisable: false,
     };
   },
   methods: {
+    enter(el) {
+      console.log("enter");
+      console.log(el);
+    },
+    afterEnter(el) {
+      console.log("afterEnter");
+      console.log(el);
+    },
+    beforeEnter(el) {
+      console.log("beforeEnter");
+      console.log(el);
+    },
+    beforeLeave(el) {
+      console.log("beforeLeave");
+      console.log(el);
+    },
+    showUsers() {
+      this.usersAreVisable = true;
+    },
+    hideUsers() {
+      this.usersAreVisable = false;
+    },
     animateBlock() {
       this.animatedBlock = true;
     },
@@ -93,67 +130,99 @@ button:active {
 }
 .animate {
   /* transform: translateX(-150px); */
-  animation: slide-fade 0.9s ease-out forwards;
+  animation: slide-scale 0.9s ease-out forwards;
   /* refers to keyframes to move the object */
 }
-.v-enter-from {
-  /* opacity: 0;
+/* .v-enter-from { */
+/* opacity: 0;
   transform: translateY(-30px); */
-}
+/* } */
 
 .v-enter-active {
   animation: slide-scale 0.3s ease-out;
   /* transition: all 0.3s ease-out; */
 }
 
-.v-enter-to {
-  /* opacity: 1;
+/* .v-enter-to { */
+/* opacity: 1;
   transform: translateY(0); */
-}
+/* } */
 
-.v-leave-from {
-  /* opacity: 1;
+/* .v-leave-from { */
+/* opacity: 1;
   transform: translate(0); */
-}
+/* } */
 .v-leave-active {
   /* transition: all 0.3s ease-in; */
   animation: slide-scale 0.3s ease-out;
   /*you can use the keyframes or use the other method using v-enter */
 }
 
-.v-leave-to {
-  /* opacity: 0;
+/* .v-leave-to { */
+/* opacity: 0;
   transform: translateY(30px); */
-}
-
-.para-enter-from {
-  /* opacity: 0;
+/* } */
+/* ============================================= */
+/* .para-enter-from { */
+/* opacity: 0;
   transform: translateY(-30px); */
-}
+/* } */
 
 .para-enter-active {
   animation: slide-scale 0.3s ease-out;
   /* transition: all 0.3s ease-out; */
 }
 
-.para-enter-to {
-  /* opacity: 1;
+/* .para-enter-to { */
+/* opacity: 1;
   transform: translateY(0); */
-}
+/* } */
 
-.para-leave-from {
-  /* opacity: 1;
+/* .para-leave-from { */
+/* opacity: 1;
   transform: translate(0); */
-}
+/* } */
 .para-leave-active {
   /* transition: all 0.3s ease-in; */
   animation: slide-scale 0.3s ease-out;
   /*you can use the keyframes or use the other method using v-enter */
 }
 
-.para-leave-to {
-  /* opacity: 0;
+/* .para-leave-to { */
+/* opacity: 0;
   transform: translateY(30px); */
+/* } */
+/* =============================== */
+/* .modal-enter-from {
+} */
+
+/* .modal-enter-to {
+} */
+
+/* .modal-leave-from { */
+/* } */
+/* .modal-leave-active { */
+/* } */
+
+/* .modal-leave-to { */
+/* opacity: 0;
+  transform: translateY(30px); */
+/* } */
+
+.fade-button-enter-from,
+.fade-button-leave-to {
+  opacity: 0;
+}
+
+.fade-button-enter-active {
+  transition: opacity 0.3s ease-out;
+}
+.fade-button-leave-active {
+  transition: opacity 0.3s ease-in;
+}
+.fade-button-enter-to,
+.fade-button-leave-from {
+  opacity: 1;
 }
 @keyframes slide-scale {
   0% {
