@@ -1,49 +1,5 @@
 <template>
-  <div class="container">
-    <users-list></users-list>
-  </div>
-  <div class="container">
-    <!-- binding animate to to block to make it move  -->
-    <div class="block" :class="{ animate: animatedBlock }"></div>
-    <button @click="animateBlock">Animate</button>
-  </div>
-  <!-- transition must only have 1 direct child -->
-  <div class="container">
-    <!-- using named transitions components -->
-    <!-- if youhave multiple transitions they will be effected the same if they are not named -->
-    <!-- You can also use attributes to change what they will be called example enter-to-class="some-class" -->
-    <!-- css false optimize your vue js -->
-    <transition
-      :css="false"
-      name="para"
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @before-leave="beforeLeave"
-      @after-enter="afterAEnter"
-      @leave="leave"
-      @after-leave="afterLeave"
-      @enter-cancelled="enterCancelled"
-      @leave-cancelled="enterLeave"
-    >
-      <p v-if="paraIsVisible">This is only sometimes visible...</p>
-    </transition>
-    <button @click="toggleParagraph">Toggle Paragraph</button>
-  </div>
-  <div class="container">
-    <!-- only one item can be on the DOM at a time use else allows us to have more than one item within a transition -->
-    <!-- mode="out-in" control the fade in and out  -->
-    <transition name="fade-button" mode="out-in">
-      <button @click="showUsers" v-if="!usersAreVisable">Show users</button>
-      <button @click="hideUsers" v-else>Hide users</button>
-    </transition>
-  </div>
-  <base-modal @close="hideDialog" :open="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close it!</button>
-  </base-modal>
-  <div class="container">
-    <button @click="showDialog">Show Dialog</button>
-  </div>
+  <div class="container"></div>
 </template>
 
 <script>
