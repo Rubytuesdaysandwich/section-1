@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <users-list></users-list>
+  </div>
+  <div class="container">
     <!-- binding animate to to block to make it move  -->
     <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">Animate</button>
@@ -9,7 +12,9 @@
     <!-- using named transitions components -->
     <!-- if youhave multiple transitions they will be effected the same if they are not named -->
     <!-- You can also use attributes to change what they will be called example enter-to-class="some-class" -->
+    <!-- css false optimize your vue js -->
     <transition
+      :css="false"
       name="para"
       @before-enter="beforeEnter"
       @enter="enter"
@@ -17,6 +22,8 @@
       @after-enter="afterAEnter"
       @leave="leave"
       @after-leave="afterLeave"
+      @enter-cancelled="enterCancelled"
+      @leave-cancelled="enterLeave"
     >
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
@@ -40,16 +47,31 @@
 </template>
 
 <script>
+import UsersList from "./components/UsersList.vue";
+
 export default {
+  components: {
+    UsersList,
+  },
   data() {
     return {
       dialogIsVisible: false,
       animatedBlock: false,
       paraIsVisible: false,
       usersAreVisable: false,
+      enterInterval: null,
+      leaveInterval: null,
     };
   },
   methods: {
+    enterCancelled(el) {
+      console.log(el);
+      clearInterval(this.enterInterval);
+    },
+    leaveCancelled(el) {
+      console.log(el);
+      clearInterval(this.leaveInterval);
+    },
     afterEnter(el) {
       console.log("afterEnter");
       console.log(el);
@@ -59,18 +81,36 @@ export default {
       console.log(el);
       el.style.opacity = 0;
     },
-    enter(el) {
+    enter(el, done) {
       console.log("enter");
       console.log(el);
-      setInterval(function () {}, 20);
+      let round = 1;
+      this.enterInterval = setInterval(() => {
+        el.style.opacity = round * 0.1;
+        round++;
+        if (round > 100) {
+          clearInterval(this.enterInterval);
+          done();
+        }
+      }, 20);
     },
     beforeLeave(el) {
       console.log("beforeLeave");
       console.log(el);
+      el.style.opacity = 1; //starting state for our leave animation
     },
-    leave(el) {
+    leave(el, done) {
       console.log("leave");
       console.log(el);
+      let round = 1;
+      this.leaveInterval = setInterval(() => {
+        el.style.opacity = 1 - round * 0.1;
+        round++;
+        if (round > 100) {
+          clearInterval(this.leaveInterval);
+          done();
+        }
+      }, 20);
     },
     afterLeave(el) {
       console.log("afterLeave");
