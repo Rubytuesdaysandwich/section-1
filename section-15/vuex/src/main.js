@@ -23,11 +23,21 @@ const store = createStore({
     finalCounter(state) {
       return state.counter * 3;
     },
+    normalizedCounter(state, getters) {
+      const finalCounter = getters.finalCounter;
+      if (finalCounter < 0) {
+        return 0;
+      }
+      if (finalCounter > 100) {
+        return 100;
+      }
+      return finalCounter;
+    },
   },
 });
+//using Vuex to keep your components lean and store your data in one place to avoid replicating the data!
 
 const app = createApp(App);
 
 app.use(store);
 app.mount("#app");
-    
