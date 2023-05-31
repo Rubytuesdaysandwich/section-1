@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import counterMutations from "./mutations";
 
 const counterModule = {
   namespaced: true,
@@ -7,15 +7,7 @@ const counterModule = {
       counter: 0,
     };
   },
-  mutations: {
-    increment(state) {
-      state.counter = state.counter + 2;
-    },
-    increase(state, payload) {
-      console.log(state);
-      state.counter = state.counter + payload.value;
-    },
-  },
+  mutations: counterMutations,
   actions: {
     increment(context) {
       setTimeout(function () {
