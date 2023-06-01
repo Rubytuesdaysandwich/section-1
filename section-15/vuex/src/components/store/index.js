@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
 import rootMutations from "./mutations.js";
 import rootActions from "./actions.js";
-import counterModule from "../../store.js";
 import rootGetters from "./getters.js";
+import counterModule from "./modules/counter/index.js";
 
 const store = createStore({
   //storing data globally to be accessed anywhere using $store.state.....
@@ -11,6 +11,7 @@ const store = createStore({
     numbers: counterModule,
   },
   state() {
+    //the state() stays here, the other sections are broken down into categories.
     return {
       // counter: 0,
       isLoggedIn: false,
