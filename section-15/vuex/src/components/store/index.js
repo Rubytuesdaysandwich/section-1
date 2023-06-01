@@ -18,13 +18,13 @@ const store = createStore({
     };
   },
   mutations: rootMutations,
-  //todo moved to mutations.js
-  //mutations need to be synchronus
-  //   setAuth(state, payload) {
-  //     state.isLoggedIn = payload.isAuth;
-  //   },
   actions: rootActions,
   getters: rootGetters,
 });
 //using Vuex to keep your components lean and store your data in one place to avoid replicating the data!
 export default store;
+//todo moved to mutations.js
+//mutations need to be synchronus
+//   setAuth(state, payload) {
+//     state.isLoggedIn = payload.isAuth;
+//   },
