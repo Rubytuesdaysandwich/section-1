@@ -1,11 +1,11 @@
 import { createStore } from "vuex";
-
-
-const store = storecreateStore({
-
-
-    
+import productsModule from "./modules/products";
+import cartModule from "./modules/cart.js";
+const store = createStore({
+  modules: {
+    prods: productsModule,
+    cart: cartModule,
+  },
 });
 
-
-export default store
+export default store;

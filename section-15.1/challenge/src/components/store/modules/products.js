@@ -1,4 +1,5 @@
 export default {
+  namespaced: true,
   state() {
     return {
       products: [
@@ -32,7 +33,7 @@ export default {
     };
   },
   getters: {
-    products() {
+    products(state) {
       return state.products;
     },
   },
