@@ -29,7 +29,7 @@ export default {
   ////   inject: ['isLoggedIn', 'login', 'logout', 'cart'],
   computed: {
     cartQuantity() {
-      return this.$store.getter["cart/quantity"];
+      return this.$store.getters["cart/quantity"];
     },
   },
 };
