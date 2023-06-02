@@ -4,32 +4,30 @@
 </template>
 
 <script>
-import TheHeader from './components/nav/TheHeader.vue';
+import TheHeader from "./components/nav/TheHeader.vue";
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
   },
   data() {
     return {
       isLoggedIn: false,
       // products: moved to products.js
-     
     };
   },
-  provide() {
-    return {
-      isLoggedIn: this.isLoggedIn,
-      // products: this.products,//moved to products.js
-      cart: this.cart,
-      addProductToCart: this.addProductToCart,
-      removeProductFromCart: this.removeProductFromCart,
-      login: this.login,
-      logout: this.logout,
-    };
-  },
+  //// provide() {
+  ////   return {
+  ////     isLoggedIn: this.isLoggedIn,
+  //     // products: this.products,//moved to products.js
+  ////     cart: this.cart,
+  ////     addProductToCart: this.addProductToCart,
+  ////     removeProductFromCart: this.removeProductFromCart,
+  ////     login: this.login,
+  // //     logout: this.logout,
+  ////   };
+  // // },
   methods: {
-    
     login() {
       this.isLoggedIn = true;
     },

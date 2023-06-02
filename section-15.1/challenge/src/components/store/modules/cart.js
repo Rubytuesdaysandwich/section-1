@@ -1,4 +1,5 @@
 export default {
+  namespaced: true,
   state() {
     return {
       //cart:
@@ -56,10 +57,10 @@ export default {
       return state.itmes;
     },
     totalSum(state) {
-        return state.total;
+      return state.total;
     },
     quantity(state) {
-        return state.quantity
+      return state.quantity;
     },
   },
 };
