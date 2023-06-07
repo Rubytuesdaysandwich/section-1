@@ -23,8 +23,9 @@ export default {
     ProductItem,
   },
   computed: {
+    //loop through all the products
     products() {
-      return this.store.getters["prods/products"];//loop through all the products
+      return this.$store.getters["prods/products"];
     },
   },
 };

@@ -10,12 +10,12 @@ export default {
   components: {
     TheHeader,
   },
-  data() {
-    return {
-      isLoggedIn: false,
+  // data() {
+    // return {
+      // isLoggedIn: true,//moved to index.js
       // products: moved to products.js
-    };
-  },
+    // };
+  // },
   //// provide() {
   ////   return {
   ////     isLoggedIn: this.isLoggedIn,
