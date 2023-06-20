@@ -11,11 +11,10 @@
       </div>
       <ul v-if="hasCoaches">
         <li v-for="coach in filteredCoaches" :key="coach.id">
-          {{ coaches.firstName }}
+          {{ coach.firstName }}
         </li>
-        List Of Coaches
       </ul>
-      <h3 v-else>No coaches found.</h3>
+      <h3 v-else>No Coaches Found.</h3>
       <!-- List of coaches -->
     </section>
   </div>
