@@ -1,15 +1,16 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control" :class={invalid: !firstName.isValid}>
+    <div class="form-control" :class="{ invalid: !firstName.isValid }">
       <label for="firstname">Firstname</label>
       <input type="text" id="firstname" v-model.trim="firstName.val" />
-      <p v-if="!firstName.isValid">Firstname must not be empty</p>
+      <p v-if="!firstName.isValid">First name must not be empty</p>
     </div>
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: !lastName.isValid }">
       <label for=""></label>
       <input type="text" id="lastname" v-model.trim="lastName.val" />
+      <p v-if="!lastName.isValid">Last name must not be empty</p>
     </div>
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for=""></label>
       <textarea
         name=""
@@ -19,6 +20,7 @@
         "
         v-model.trim="description.val"
       ></textarea>
+      <p v-if="!description.isValid">Description must not be empty</p>
     </div>
     <div class="form-control">
       <label for=""></label>
