@@ -1,14 +1,13 @@
 <template>
   <div>
     <section>
-      Filter
-      <!-- filter -->
+      <coach-filter @change-filter="setFilter"></coach-filter>
     </section>
     <section>
       <base-card>
         <div class="controls">
           <base-button mode="outline">Refresh</base-button>
-          <base-button link to="/register">Register as Coach</base-button>
+          <base-button v-if="!isCoach" link to="/register">Register as Coach</base-button>
         </div>
         <ul v-if="hasCoaches">
           <coach-item
@@ -33,19 +32,57 @@
 
 <script>
 import CoachItem from "../../components/coaches/CoachItem.vue";
+import CoachFilter from "../../components/coaches/CoachFilter.vue";
 import BaseButton from "../../components/ui/BaseButton.vue";
 export default {
   components: {
     CoachItem,
+    CoachFilter,
     BaseButton,
+  },
+  data() {
+    return {
+      activeFilters: {
+        frontend: true,
+        backend: true,
+        career: true,
+      },
+    };
   },
 
   computed: {
+    isCoach() {
+      return this.$store.getters["coaches/iscoach"];
+    },
+
     filteredCoaches() {
-      return this.$store.getters["coaches/coaches"];
+      const coaches = this.$store.getters["coaches/coaches"];
+      return coaches.filter((coach) => {
+        if (this.activeFilters.frontend && coach.aread.includes("frontend")) {
+          return true;
+        }
+        if (this.activeFilters.frontend && coach.aread.includes("backend")) {
+          return true;
+        }
+        if (this.activeFilters.frontend && coach.aread.includes("career")) {
+          return true;
+        }
+      });
     },
     hasCoaches() {
       return this.$store.getters["coaches/hasCoaches"];
+    },
+  },
+  methods: {
+    setFilters(event) {
+      const inputId = event.target.id;
+      const isActive = event.target.checked;
+      const updatedFilters = {
+        ...this.filters,
+        [inputId]: isActive,
+      };
+      this.filters = updatedFilters;
+      this.$emit("change-filter", updatedFilters);
     },
   },
 };
