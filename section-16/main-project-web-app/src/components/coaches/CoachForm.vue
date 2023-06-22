@@ -1,8 +1,9 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control">
+    <div class="form-control" :class={invalid: !firstName.isValid}>
       <label for="firstname">Firstname</label>
       <input type="text" id="firstname" v-model.trim="firstName.val" />
+      <p v-if="!firstName.isValid">Firstname must not be empty</p>
     </div>
     <div class="form-control">
       <label for=""></label>
@@ -48,6 +49,8 @@
         <label for="career">Career Development</label>
       </div>
     </div>
+    <p v-if="!formIsValid">Please fix the above errors and submit again.</p>
+    <base-button>Register</base-button>
   </form>
 </template>
 
@@ -80,8 +83,40 @@ export default {
     // console.log();
   },
   methods: {
-    validateForm() {},
+    validateForm() {
+      this.formIsValid = true;
+      if (this.firstName.val === "") {
+        //---firstName
+        this.fristName.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.lastName.val === "") {
+        //---lastName
+        this.lastName.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.description.val === "") {
+        //---description
+        this.description.isValid = false;
+        this.formIsValid = false;
+      }
+      if (!this.rate.val || this.rate.val < 0) {
+        //---rate
+        this.rate.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.areas.val.length === 0) {
+        this.area.isValid = false;
+        this.formIsValid = false;
+      }
+    },
     submitForm() {
+      this.validateForm();
+
+      if (!this.formIsValid) {
+        return;
+      }
+
       const formData = {
         first: this.firstName,
         last: this.lastName,
