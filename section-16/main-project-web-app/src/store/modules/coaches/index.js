@@ -7,6 +7,7 @@ export default {
   namespaced: true,
   state() {
     return {
+      // userIsCoach:false,this is an alternate approach
       coaches: [
         {
           id: "c1",

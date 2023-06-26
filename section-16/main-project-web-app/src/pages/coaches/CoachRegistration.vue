@@ -2,7 +2,7 @@
   <!-- coach registration -->
   <section>
     <h2>Register as a coach now!</h2>
-    <coach-form></coach-form>
+    <coach-form @save-data="saveData"></coach-form>
   </section>
 </template>
 
@@ -13,12 +13,21 @@ export default {
   components: {
     CoachForm,
   },
-  computed: {},
+
   methods: {
     saveData(data) {
-      this.$store.dispatch("coaches/registerCoach", data);
-      this.$router.replace("/coaches");
+      this.$store.dispatch("coaches/registerCoach", data); //name space action name
+      this.$router.replace("/coaches"); //using replace prevents the user from going back to the form which may cause issues in data if the user were able to resubmit  the same form
     },
   },
 };
 </script>
+
+<style scoped>
+section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 50px;
+}
+</style>
