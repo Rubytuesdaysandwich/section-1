@@ -38,13 +38,14 @@ export default {
         return;
       }
 
-      
+      this.$store.dispatch("requests/contactCoach", {
+        email: this.email,
+        message: this.message,
+        coachId: this.$router.id,
+        //because our module is namespaced requests is our namespace and contactCoach is our action name
+      });
 
-
-
-
-
-      
+      this.$router.replace("/coaches");
     },
   },
 };
