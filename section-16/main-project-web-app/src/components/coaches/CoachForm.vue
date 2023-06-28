@@ -8,7 +8,7 @@
         v-model.trim="firstName.val"
         @blur="clearValidity('firstName')"
       />
-      <p v-if="!firstName.isValid">First name must not be empty</p>
+      <p v-if="!firstName.isValid">Firstname must not be empty</p>
     </div>
     <div class="form-control" :class="{ invalid: !lastName.isValid }">
       <label for="lastname">Lastname</label>
@@ -18,7 +18,7 @@
         v-model.trim="lastName.val"
         @blur="clearValidity('lastName')"
       />
-      <p v-if="!lastName.isValid">Last name must not be empty</p>
+      <p v-if="!lastName.isValid">Lastname must not be empty</p>
     </div>
     <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for="description">Description</label>
@@ -118,7 +118,7 @@ export default {
       this.formIsValid = true;
       if (this.firstName.val === "") {
         //---firstName
-        this.fristName.isValid = false;
+        this.firstName.isValid = false;
         this.formIsValid = false;
       }
       if (this.lastName.val === "") {
@@ -137,7 +137,7 @@ export default {
         this.formIsValid = false;
       }
       if (this.areas.val.length === 0) {
-        this.area.isValid = false;
+        this.areas.isValid = false;
         this.formIsValid = false;
       }
     },
@@ -149,7 +149,7 @@ export default {
       const formData = {
         first: this.firstName.val,
         last: this.lastName.val,
-        desc: this.desc.val,
+        desc: this.description.val,
         rate: this.rate.val,
         areas: this.areas.val,
       };

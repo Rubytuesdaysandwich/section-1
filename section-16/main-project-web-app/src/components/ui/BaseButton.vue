@@ -1,9 +1,9 @@
 <template>
   <div>
-    <button v-if="!link">
+    <button v-if="!link" :class="mode">
       <slot></slot>
     </button>
-    <router-link v-else :to="to">
+    <router-link v-else :to="to" :class="mode">
       <slot></slot>
     </router-link>
   </div>
@@ -11,13 +11,30 @@
 
 <script>
 export default {
+  // props: {
+  //   link: {
+  //     type: Boolean,
+  //     required: false,
+  //     default: null,
+  //   },
+  //   to: { type: String, required: false },
+  // },
   props: {
-    link: {
-      type: Boolean,
+    mode: {
+      type: String,
       required: false,
       default: null,
     },
-    to: { type: String, required: false },
+    link: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    to: {
+      type: String,
+      required: false,
+      default: "/",
+    },
   },
 };
 </script>

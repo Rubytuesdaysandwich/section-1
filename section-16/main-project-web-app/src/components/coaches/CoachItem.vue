@@ -12,16 +12,18 @@
     </div>
     <div class="actions">
       <!-- the id should not be hard coded in this instance for the route -->
-      <base-button link :to="coachContactLink">Contact</base-button>
+      <base-button mode="outline" link :to="coachContactLink"
+        >Contact</base-button
+      >
       <base-button link :to="coachDetailsLink">View Details</base-button>
     </div>
   </li>
 </template>
 
 <script>
-import BaseButton from "../ui/BaseButton.vue";
+//// import BaseButton from "../ui/BaseButton.vue";
 export default {
-  components: { BaseButton },
+ //// components: { BaseButton },
   props: ["id", "firstName", "lastName", "rate", "areas"],
   computed: {
     fullName() {

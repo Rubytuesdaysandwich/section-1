@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <coach-filter @change-filter="setFilter"></coach-filter>
+      <coach-filter @change-filter="setFilters"></coach-filter>
     </section>
     <section>
       <base-card>
@@ -16,7 +16,7 @@
             v-for="coach in filteredCoaches"
             :key="coach.id"
             :id="coach.id"
-            :first-name="coach.fistName"
+            :first-name="coach.firstName"
             :last-name="coach.lastName"
             :rate="coach.hourlyRate"
             :areas="coach.areas"
@@ -56,7 +56,6 @@ export default {
     isCoach() {
       return this.$store.getters["coaches/isCoach"];
     },
-  },
 
     filteredCoaches() {
       const coaches = this.$store.getters["coaches/coaches"];
@@ -75,16 +74,22 @@ export default {
     hasCoaches() {
       return this.$store.getters["coaches/hasCoaches"];
     },
+  },
+  // methods: {
+  //   setFilters(event) {
+  //     const inputId = event.target.id;
+  //     const isActive = event.target.checked;
+  //     const updatedFilters = {
+  //       ...this.filters,
+  //       [inputId]: isActive,
+  //     };
+  //     this.filters = updatedFilters;
+  //     this.$emit("change-filter", updatedFilters);
+  //   },
+  // },
   methods: {
-    setFilters(event) {
-      const inputId = event.target.id;
-      const isActive = event.target.checked;
-      const updatedFilters = {
-        ...this.filters,
-        [inputId]: isActive,
-      };
-      this.filters = updatedFilters;
-      this.$emit("change-filter", updatedFilters);
+    setFilters(updatedFilters) {
+      this.activeFilters = updatedFilters;
     },
   },
 };
