@@ -8,7 +8,7 @@ const store = createStore({
   },
   state() {
     return {
-      userId: "c3",
+      userId: "c3",//temporary user id eventually made dynamic
     };
   },
   getters: {

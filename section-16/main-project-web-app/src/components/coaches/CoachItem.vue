@@ -21,9 +21,7 @@
 </template>
 
 <script>
-//// import BaseButton from "../ui/BaseButton.vue";
 export default {
- //// components: { BaseButton },
   props: ["id", "firstName", "lastName", "rate", "areas"],
   computed: {
     fullName() {

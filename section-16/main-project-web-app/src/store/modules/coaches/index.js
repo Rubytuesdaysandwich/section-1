@@ -8,6 +8,7 @@ export default {
   state() {
     return {
       // userIsCoach:false,this is an alternate approach
+      lastFetch: null,//saves a time stamp of when the last data fetch to the database took place
       coaches: [
         {
           id: "c1",
@@ -30,7 +31,7 @@ export default {
       ],
     };
   },
-  mutations: mutations,
-  actions: actions,
-  getters: getters,
+  mutations,
+  actions,
+  getters,
 };

@@ -1,10 +1,11 @@
 <template>
   <section>
-    <base-card>
+    <base-card :show="!!error" title="An error occurred!" @close="handleError">
       <header>
         <h2>Request Received</h2>
       </header>
-      <ul v-if="hasRequests">
+      <base-spinner v-if="isLoading"></base-spinner>
+      <ul v-else-if="hasRequests && !isLoading">
         <request-item
           v-for="req in receivedRequests"
           :key="req.id"
@@ -29,6 +30,23 @@ export default {
     },
     hasRequests() {
       return this.$store.getters["requests/hasRequests"];
+    },
+  },
+  created(){
+    this.loadRequests();//created is a life cycle method part of the vue life cycle
+  },
+  methods: {
+    async loadRequests() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("requests/hasRequests");
+      } catch (error) {
+        this.error = error.message || "Something failed";
+      }
+      this.isLoading = false;
+    },
+    handleError() {
+      this.error = null;
     },
   },
 };
