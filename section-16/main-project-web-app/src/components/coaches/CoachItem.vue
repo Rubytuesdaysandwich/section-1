@@ -28,7 +28,7 @@ export default {
       return this.firstName + " " + this.lastName;
     },
     coachContactLink() {
-      return this.$route.path + "/" + this.id + "contact"; // coaches/c1/contact for examplpe using the this.$route.path makes the routes much more dynamic in the future to make things easier for us
+      return this.$route.path + "/" + this.id + "/contact"; // coaches/c1/contact for examplpe using the this.$route.path makes the routes much more dynamic in the future to make things easier for us
     },
     coachDetailsLink() {
       return this.$route.path + "/" + this.id; // /coaches/c1 refers to router.js

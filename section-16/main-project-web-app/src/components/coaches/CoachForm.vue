@@ -23,7 +23,7 @@
     <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for="description">Description</label>
       <textarea
-        name=""
+        
         id="description"
         cols="30"
         rows="5"

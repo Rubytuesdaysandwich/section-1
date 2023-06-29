@@ -1,21 +1,27 @@
 <template>
-  <section>
-    <base-card :show="!!error" title="An error occurred!" @close="handleError">
-      <header>
-        <h2>Request Received</h2>
-      </header>
-      <base-spinner v-if="isLoading"></base-spinner>
-      <ul v-else-if="hasRequests && !isLoading">
-        <request-item
-          v-for="req in receivedRequests"
-          :key="req.id"
-          :email="req.userEmail"
-          :message="req.message"
-        ></request-item>
-      </ul>
-      <h3 v-else>You haven't received any requests yet!</h3>
-    </base-card>
-  </section>
+  <div>
+    <section>
+      <base-card
+        :show="!!error"
+        title="An error occurred!"
+        @close="handleError"
+      >
+        <header>
+          <h2>Request Received</h2>
+        </header>
+        <base-spinner v-if="isLoading"></base-spinner>
+        <ul v-else-if="hasRequests && !isLoading">
+          <request-item
+            v-for="req in receivedRequests"
+            :key="req.id"
+            :email="req.userEmail"
+            :message="req.message"
+          ></request-item>
+        </ul>
+        <h3 v-else>You haven't received any requests yet!</h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -32,8 +38,8 @@ export default {
       return this.$store.getters["requests/hasRequests"];
     },
   },
-  created(){
-    this.loadRequests();//created is a life cycle method part of the vue life cycle
+  created() {
+    this.loadRequests(); //created is a life cycle method part of the vue life cycle
   },
   methods: {
     async loadRequests() {
