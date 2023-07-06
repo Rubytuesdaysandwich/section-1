@@ -63,10 +63,9 @@ export default {
   async auth(context, payload) {
     //return a promise
     const mode = payload.mode;
-    let url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[AIzaSyA04gnCBaaM494NpvjJzCmQ9UPRootMam4]`;
+    let url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA04gnCBaaM494NpvjJzCmQ9UPRootMam4`;
     if (mode === "signup") {
-      url ===
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[AIzaSyA04gnCBaaM494NpvjJzCmQ9UPRootMam4]`;
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA04gnCBaaM494NpvjJzCmQ9UPRootMam4`;
     }
     const response = await fetch(
       url, //firebase rest api web api key
