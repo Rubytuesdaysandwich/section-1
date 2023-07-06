@@ -66,3 +66,5 @@ export default router;
 
 //* const CoachDetail = () => import('./pages/coaches/CoachDetail.vue');
 //* (for all routes)
+
+//!before building
