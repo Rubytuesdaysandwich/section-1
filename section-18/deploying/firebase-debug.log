@@ -1,0 +1,21 @@
+[debug] [2023-07-06T19:15:15.019Z] ----------------------------------------------------------------------
+[debug] [2023-07-06T19:15:15.020Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ruebe\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-07-06T19:15:15.020Z] CLI Version:   12.4.2
+[debug] [2023-07-06T19:15:15.021Z] Platform:      win32
+[debug] [2023-07-06T19:15:15.021Z] Node Version:  v18.14.1
+[debug] [2023-07-06T19:15:15.022Z] Time:          Thu Jul 06 2023 13:15:15 GMT-0600 (Mountain Daylight Time)
+[debug] [2023-07-06T19:15:15.022Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-06T19:15:15.027Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-06T19:15:15.028Z] > authorizing via signed-in user (rueben.durfee@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\ruebe\Documents\GitHub\vue-js-coding-lectures-udemy-course\section-18\deploying
+

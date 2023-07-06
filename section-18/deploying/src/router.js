@@ -68,3 +68,4 @@ export default router;
 //* (for all routes)
 
 //!before building
+//todo you do not touch the dist folder when adding updates to the project if any are to be added. You should update the normal files then push a rebuild
