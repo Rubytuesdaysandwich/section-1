@@ -1,8 +1,14 @@
 <template>
   <section class="container">
-    <h2>{{ userName }}</h2>
+    <user-data
+      class="test"
+      :first-name="userName"
+      :last-name="lastName"
+    ></user-data>
+    <button @click="setAge">change age</button>
+    <!-- <h2>{{ userName }}</h2>
     <h3>{{ age }}</h3>
-    <button @click="setAge">Change Age</button>
+    <button @click="setAge">Change Age</button> -->
     <div>
       <!-- @input we are listing to events on the input we can also use v-model in place of it -->
       <!-- v-model is a way to achieve two way binding -->
@@ -14,9 +20,11 @@
 </template>
 
 <script>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, provide } from "vue";
+import UserData from "./components/UserData.vue";
 //*computed wants a function as an argument
 export default {
+  components: { UserData },
   setup() {
     // const uName = ref('Maximilian');
     const firstName = ref("");
@@ -27,6 +35,12 @@ export default {
     //   name: 'Maximilian',
     //   age: 31,
     // });
+    const uName = computed(function () {
+      //computed checks to see if one of the two refs changes if they do the computed property runs again.
+      return firstName.value + " " + lastName.value;
+    });
+    provide("userAge", uAge);
+
     watch([uAge, uName], function (newValues, oldValues) {
       //*in the composition api you can have multiple item to active the watcher function unlike options api where  you can only have one
 
@@ -36,10 +50,6 @@ export default {
       console.log("New name:" + newValues[1]);
     });
 
-    const uName = computed(function () {
-      //computed checks to see if one of the two refs changes if they do the computed property runs again.
-      return firstName.value + " " + lastName.value;
-    });
     //computed properties are really just refs in disguise
     function setNewAge() {
       uAge.value = 33;
@@ -64,7 +74,7 @@ export default {
       setFirstName,
       setLastName,
       firstName,
-      // lastName,
+      lastName,
       lastNameInput,
     };
   },
@@ -79,6 +89,10 @@ export default {
   //     this.age = 32;
   //   }
   // }
+  provide() {
+    //*working with provide and inject
+    return { age: this.age };
+  },
 };
 </script>
 
