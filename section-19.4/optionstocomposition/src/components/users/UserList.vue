@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import UserItem from "./UserItem.vue";
 
 export default {
@@ -34,6 +34,7 @@ export default {
     UserItem,
   },
   props: ["users"],
+  emits: ["list-projects"],
   ////////////////////////////
   setup(props) {
     const enteredSearchTerm = ref("");
@@ -50,6 +51,17 @@ export default {
       }
       return users;
     });
+    watch(enteredSearchTerm, function (newValue) {
+      setTimeout(() => {
+        if (newValue === enteredSearchTerm.value) {
+          activeSearchTerm.value = newValue;
+        }
+      }, 300);
+    });
+
+    function updateSearch(val) {
+      enteredSearchTerm.value = val;
+    }
     const sorting = ref(null);
     const displayedUsers = computed(function () {
       if (!sorting.value) {
@@ -67,6 +79,17 @@ export default {
         }
       });
     });
+    function sort(mode) {
+      sorting.value = mode;
+    }
+
+    return {
+      enteredSearchTerm,
+      updateSearch,
+      displayedUsers,
+      sorting,
+      sort,
+    };
   },
 
   //// data() {
@@ -105,23 +128,23 @@ export default {
   //     });
   //   },
   // },
-  methods: {
-    updateSearch(val) {
-      this.enteredSearchTerm = val;
-    },
-    sort(mode) {
-      this.sorting = mode;
-    },
-  },
-  watch: {
-    enteredSearchTerm(val) {
-      setTimeout(() => {
-        if (val === this.enteredSearchTerm) {
-          this.activeSearchTerm = val;
-        }
-      }, 300);
-    },
-  },
+  // methods: {
+  //   updateSearch(val) {
+  //     this.enteredSearchTerm = val;
+  //   },
+  //   sort(mode) {
+  //     this.sorting = mode;
+  //   },
+  // },
+  // watch: {
+  //   enteredSearchTerm(val) {
+  //     setTimeout(() => {
+  //       if (val === this.enteredSearchTerm) {
+  //         this.activeSearchTerm = val;
+  //       }
+  //     }, 300);
+  //   },
+  // },
 };
 </script>
 
