@@ -7,7 +7,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 export default {
   setup() {
-    const store = useStore();
+    const store = useStore(); //using vuex with the composition api
 
     const counter = computed(function () {
       return store.getters.counter;
