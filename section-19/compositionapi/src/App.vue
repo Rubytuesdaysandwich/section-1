@@ -5,34 +5,41 @@
     <!-- with an object using ref -->
     <h2>{{ user.name }}</h2>
     <h3>{{ user.age }}</h3>
+    <button @click="setAge">Change Age</button>
   </section>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+//ref,reactive,torefs
+import { reactive } from "vue";
 export default {
   setup() {
     ////const uName = ref("Maximilian");
     //data without an object
-    const uAge = ref(21);
+    // const uAge = ref(21);
     //reactive or refs
 
     const user = reactive({
       name: "Maximilian",
       age: 32,
     });
-    console.log(uAge.value);
-    console.log(user.name,user.age);
-    user.value = {};
-    console.log(uAge, user);
-    setTimeout(function () {
-      // uName.value = "Max";
-      // uAge.value = 31;//*using normal ref data
-      // user.value.name = "max";//using a ref({}) object and accessing its values
-      // user.value.age = 34;
-      user.name = "max"; //*using reactive()
-      user.age = 34;
-    }, 2000);
+
+    // user.value = {};
+    // console.log( user);
+    //setTimeout(function () {
+    // uName.value = "Max";
+    // uAge.value = 31;//*using normal ref data
+    // user.value.name = "max";//using a ref({}) object and accessing its values
+    // user.value.age = 34;
+    //user.name = "max"; //*using reactive()
+    // user.age = 34;
+    // }, 2000);
+
+    // const userRefs = toRefs(user);
+
+    function setNewAge() {
+      user.age = 38;
+    }
 
     return {
       //userName: user.value.name,
@@ -40,7 +47,10 @@ export default {
       // user: user.name,
       // age: user.age,
       // uAge: age,
-      user:user
+      user: user,
+      setAge: setNewAge,
+      // userName: userRefs.name,
+      // age: userRefs.age,
     };
   },
   // data() {
@@ -48,6 +58,11 @@ export default {
   //     userName: 'Maximilian',
   //   };
   // },
+  methods: {
+    setNewAge() {
+      this.age = 36;
+    },
+  },
 };
 </script>
 
