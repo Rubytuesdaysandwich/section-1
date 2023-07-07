@@ -7,7 +7,8 @@
       <!-- @input we are listing to events on the input we can also use v-model in place of it -->
       <!-- v-model is a way to achieve two way binding -->
       <input type="text" placeholder="First Name" v-model="FirstName" />
-      <input type="text" placeholder="Last Name" v-model="LastName" />
+      <input type="text" placeholder="Last Name" ref="lastNameInput" />
+      <button @click="setLastName">Set Last name</button>
     </div>
   </section>
 </template>
@@ -20,6 +21,7 @@ export default {
     // const uName = ref('Maximilian');
     const firstName = ref("");
     const lastName = ref("");
+    const lastNameInput = ref(null);
     const uAge = ref(31);
     // const user = reactive({
     //   name: 'Maximilian',
@@ -47,8 +49,11 @@ export default {
       firstName.value = event.target.value; //setting the value of the first name
     }
 
-    function setLastName(event) {
-      lastName.value = event.target.value; //setting the value of the last name
+    //function setLastName(event) {
+    //lastName.value = event.target.value; //setting the value of the last name
+    //}
+    function setLastName() {
+      lastName.value = lastNameInput.value.value; //setting the value of the last name
     }
 
     return {
@@ -59,7 +64,8 @@ export default {
       setFirstName,
       setLastName,
       firstName,
-      lastName,
+      // lastName,
+      lastNameInput,
     };
   },
   // data() {
